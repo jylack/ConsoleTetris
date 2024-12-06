@@ -55,11 +55,56 @@ namespace ConsoleTetris
             {
                 Console.WriteLine(tetris);
             }
-            
+
             Console.SetCursorPosition(38, 38);
             Console.Write("1.시작하기");
             Console.Write("\t2.QUIT");
 
+            ConsoleKeyInfo key = Console.ReadKey(true);
+
+            switch (key.Key)
+            {
+                case ConsoleKey.D1:
+                    GameStart();
+                    break;
+                case ConsoleKey.D2:
+                    Console.WriteLine();
+                    Console.WriteLine("이걸끄네!");
+                    break;
+
+            }
+
+        }
+
+
+        static void GameStart()
+        {
+            //블럭종류
+            string blockStyle = "　▨▩▣";
+
+            int[,] background;
+            int backgroundWidth = 7;
+            int backgroundHeight = 10;
+
+            Console.Clear();
+            background = new int[backgroundHeight, backgroundWidth];
+            Console.WriteLine();
+
+            //테트리스 박스들 다 빈공간으로 채움
+            for (int i = 0; i < background.GetLength(0); i++)
+            {
+                for (int j = 0; j < background.GetLength(1); j++)
+                {
+                    background[i, j] = 0;
+                }
+            }
+
+
+
+
+        }
+        static void DrawBackGround(ref int[,] background, string blockStyle)
+        {
 
         }
     }
