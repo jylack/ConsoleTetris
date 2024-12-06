@@ -80,11 +80,11 @@ namespace ConsoleTetris
         static void GameStart()
         {
             //블럭종류
-            string blockStyle = "　▨▩▣";
+            string blockStyle = " ▧▩▣";
 
             int[,] background;
-            int backgroundWidth = 7;
-            int backgroundHeight = 10;
+            int backgroundWidth = 15;
+            int backgroundHeight = 20;
 
             Console.Clear();
             background = new int[backgroundHeight, backgroundWidth];
@@ -95,18 +95,47 @@ namespace ConsoleTetris
             {
                 for (int j = 0; j < background.GetLength(1); j++)
                 {
-                    background[i, j] = 0;
+                    if (i == background.GetLength(0) - 1 ||
+                        j == background.GetLength(1) - 1 ||
+                        j == 0)
+                    {
+                        background[i, j] = 1;
+                    }
+
+                    else
+                    {
+                        background[i, j] = 0;
+
+                    }
                 }
             }
-
-
-
+            DrawBackGround(ref background, blockStyle);
 
         }
         static void DrawBackGround(ref int[,] background, string blockStyle)
         {
+            for (int i = 0; i < background.GetLength(0); i++)
+            {
+                for (int j = 0; j < background.GetLength(1); j++)
+                {
+                    Console.Write(blockStyle[background[i, j]]);
+                }
+                Console.WriteLine();
+            }
+
+            //for (int i = 0; i < background.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < background.GetLength(1); j++)
+            //    {
+            //        Console.Write(background[i,j]);
+            //    }
+            //    Console.WriteLine();
+            //}
 
         }
     }
 }
+
+
+
 
